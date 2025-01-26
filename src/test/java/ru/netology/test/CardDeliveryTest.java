@@ -1,5 +1,8 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,16 +19,20 @@ import static org.openqa.selenium.Keys.HOME;
 import java.time.Duration;
 
 class CardDeliveryTest {
-
     @BeforeEach
-    void setup() {
-        open("http://localhost:9999");
+    void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
-
+        open("http://localhost:9999");
         var validUser = DataGenerator.Registration.generateUser("ru");
 
         var daysToAddForFirstMeeting = 4;

@@ -1,1 +1,0 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/1rkcgs897nif76vr?svg=true)](https://ci.appveyor.com/project/ViktoriaGuschina/patterns-postponement-of-the-meeting)
